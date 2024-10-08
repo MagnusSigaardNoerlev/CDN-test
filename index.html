@@ -3,9 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Vue via CDN</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="./assets/js/app.js" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="gummiAnd">
+      Jeg hedder: {{name}} og er {{age}} år gammel. Mit fodboldhold er {{team}}
+      og mit favorit spiller er {{player}} {{img}}
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const name = ref("Magnus");
+          const age = ref(24);
+          const team = ref("FC Barcelona");
+          const player = ref("Lionel Messi");
+
+          console.log("Navnet er " + name.value);
+
+          return {
+            name,
+            age,
+            team,
+            player,
+          };
+        },
+      }).mount("#gummiAnd");
+    </script>
+  </body>
 </html>
